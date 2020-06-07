@@ -42,6 +42,7 @@ nav {
 
     div{
         height: 260px;
+        // 第一個div
         &:nth-child(1){
             background: black;
             font-size: 42px;
@@ -50,11 +51,12 @@ nav {
             text-align: center;
             color: blanchedalmond;
         }
-
+        // 第二個div
         &:nth-child(2){
             background: url(./img/d-beach-1.jpg);
             background-size: 100%;
         }
+        // 第三個div
         &:nth-child(3){
             background: url(./img/d-beach-2.jpg);
             background-size: 100%;
@@ -76,6 +78,7 @@ nav {
     }
 
 }
+// RWD平板
 @media  screen and(min-width:768px) and (max-width:1199px){
     @mixin table-box  {
         width: 750px;
@@ -104,6 +107,38 @@ nav {
     }
     #content{
         @include table-box();
+    }
+}
+// RWD手機
+@media screen and(max-width:767px){
+    @mixin phone-box {
+        width: 100%;
+        margin: 0 auto;
+        transition: 0.3s;
+    }
+    nav{
+        div{
+            @include phone-box();
+        }
+    }
+
+    #picture{
+        @include phone-box();
+        grid-template-columns: 1fr;
+        &:nth-child(2){
+            background: url(/img/m-beach-1.png);
+        }
+        &:nth-child(3){
+            background: url(/img/m-beach-2.png);
+        }
+
+    }
+    #content{
+        @include phone-box();
+        grid-template-columns: 1fr;
+        h1{
+            grid-column: 1/2;
+        }
     }
 }
 
